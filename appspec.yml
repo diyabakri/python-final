@@ -1,0 +1,28 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/root/python-final
+
+permissions:
+  - object: /home/root/python-final
+    pattern: "**"
+    owner: root
+    group: root
+    mode: 755
+
+hooks:
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 300
+      runas: root
+
+  ApplicationStart:
+    - location: scripts/start_app.sh
+      timeout: 300
+      runas: root
+
+  ApplicationStop:
+    - location: scripts/stop_app.sh
+      timeout: 300
+      runas: root
