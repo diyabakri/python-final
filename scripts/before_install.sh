@@ -10,4 +10,4 @@ systemctl start docker
 systemctl enable docker
 
 echo "Ensuring Docker service runs without sudo..."
-usermod -aG docker root
+usermod -aG docker ubuntu
