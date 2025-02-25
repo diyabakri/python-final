@@ -2,12 +2,12 @@
 set -e
 
 echo "Updating system and installing dependencies..."
-apt update -y
-apt install -y docker.io unzip awscli
+sudo yum update -y
+sudo yum install -y docker
 
 echo "Starting Docker..."
-systemctl start docker
-systemctl enable docker
+sudo systemctl start docker
+sudo systemctl enable docker
 
-echo "Ensuring Docker service runs without sudo..."
-usermod -aG docker ubuntu
+echo "Adding ec2-user to the docker group..."
+sudo usermod -aG docker ec2-user
